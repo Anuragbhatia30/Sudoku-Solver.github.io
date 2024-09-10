@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sudoku Solver</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="main">
+            <nav>
+                <ul>
+                    <li style="font-size: 30px; font-style: italic; font-weight: 900;">Sudoku Solver</li>
+                    <li style="margin-left: 450px;"><a href="main.html">Get The Sudoku Solved</a></li>
+                    <li><a href="rules.html">Rules of Solving the Sudoku</a></li>
+                </ul>
+            </nav>
+            <div class="headings">
+                <h1>Enter the Sudoku : </h1>
+                <h1>Answer : </h1>
+            </div>
+            <div class="main-container">
+                <div class="container">
+                    <table id="tables">
+                        <tbody>
+                            <script>
+                                for (let i = 0; i < 9; i++) {
+                                    document.write('<tr>'); 
+                                    for (let j = 0; j < 9; j++) {
+                                        document.write('<td><input type="number" id = "cell-' + i + '-' + j + '" oninput="limitInput(this)"></td>'); 
+                                    }
+                                    document.write('</tr>');
+                                }
+                                function limitInput(element) {
+                                    if (element.value.length > 1) {
+                                        element.value = element.value.slice(0, 1); // Keep only the first character
+                                    }
+                                }
+                            </script>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="buttons">
+                    <button onclick="solve()">SOLVE</button>
+                    <button onclick="reset()">RESET</button>
+                </div>
+                <div id="customAlert" class="alert">
+                    <div class="alert-content">
+                        <p>The Sudoku you entered is Invalid!</p>
+                        <span class="alert-close" onclick="hideAlert()">&times;</span>
+                    </div>
+                </div>
+                <div class="container2" id="tableContainer">
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
